@@ -1,25 +1,66 @@
 {% extends 'base.html' %} {% block content %}
-<div class="page-header header-filter">
+{% comment %} <div class="page-header header-filter">
     <div class="container">
         <div class="content-center brand">
             <h1 class="h1-seo">Fitness•Freak</h1>
-            <h3>A beautiful Design System for Bootstrap 4. It's Free and Open Source.</h3>
+            <h3>Track your nutrition, fitness & health data.</h3>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
+
+<div class="page-header">
+      <img src="../assets/img/blob.png" class="path">
+      <img src="../assets/img/path2.png" class="path2">
+      <img src="../assets/img/triunghiuri.png" class="shapes triangle">
+      <img src="../assets/img/waves.png" class="shapes wave">
+      <img src="../assets/img/patrat.png" class="shapes squares">
+      <img src="../assets/img/cercuri.png" class="shapes circle">
+      <div class="content-center">
+        <div class="row row-grid justify-content-between align-items-center text-left">
+          <div class="col-lg-6 col-md-6">
+            <h1 class="text-white">Fitness
+              <br/>
+              <span class="text-white">Freak</span>
+            </h1>
+            <p class="text-white mb-3">Track Your Nutrition, Fitness & Health Data....</p>
+            <div class="btn-wrapper mb-3">
+              <p class="category text-success d-inline">Start Now!</p>
+              <a href="{% url 'signup' %}" class="btn btn-success btn-link btn-sm"><i class="tim-icons icon-minimal-right"></i></a>
+            </div>
+            {% comment %} <div class="btn-wrapper">
+              <div class="button-container">
+                <button href="javascript:void(0)" class="btn btn-icon btn-simple btn-round btn-neutral">
+                  <i class="fab fa-twitter"></i>
+                </button>
+                <button href="javascript:void(0)" class="btn btn-icon btn-simple btn-round btn-neutral">
+                  <i class="fab fa-dribbble"></i>
+                </button>
+                <button href="javascript:void(0)" class="btn btn-icon btn-simple btn-round btn-neutral">
+                  <i class="fab fa-facebook"></i>
+                </button>
+              </div>
+            </div> {% endcomment %}
+          </div>
+          <div class="col-lg-4 col-md-5">
+            <img src="../assets/img/etherum.png" alt="Circle image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-12">
-            <h1 class="text-center">Your best benefit</h1>
+            <h1 class="text-center">Log your diet, exercise, biometrics and notes.</h1>
             <div class="row row-grid justify-content-center">
                 <div class="col-lg-3">
                     <div class="info">
                         <div class="icon icon-primary">
                             <i class="tim-icons icon-money-coins"></i>
                         </div>
-                        <h4 class="info-title">Low Commission</h4>
+                        <h4 class="info-title">100% free, nothing to pay</h4>
                         <hr class="line-primary">
-                        <p>Divide details about your work into parts. Write a few lines about each one. A paragraph describing a feature will.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a faucibus metus, sit amet bibendum erat. Integer ex nunc</p>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -27,20 +68,18 @@
                         <div class="icon icon-warning">
                             <i class="tim-icons icon-chart-pie-36"></i>
                         </div>
-                        <h4 class="info-title">High Incomes</h4>
+                        <h4 class="info-title">Fastest, easiest calorie counting apps</h4>
                         <hr class="line-warning">
-                        <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing feature will be a feature. </p>
-                    </div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a faucibus metus, sit amet bibendum erat. Integer ex nunc</p>                    </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="info">
                         <div class="icon icon-success">
                             <i class="tim-icons icon-single-02"></i>
                         </div>
-                        <h4 class="info-title">Verified People</h4>
+                        <h4 class="info-title">Proven success</h4>
                         <hr class="line-success">
-                        <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing be enough.</p>
-                    </div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a faucibus metus, sit amet bibendum erat. Integer ex nunc</p>                    </div>
                 </div>
             </div>
         </div>

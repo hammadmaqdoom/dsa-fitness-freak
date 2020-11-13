@@ -21,12 +21,12 @@
     <link href="{% static 'demo/demo.css' %}" rel="stylesheet" />
 </head>
 
-<body class="index-page">
+<body class="{{type}}">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="https://demos.creative-tim.com/blk-design-system/index.html" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom" target="_blank">
+                <a class="navbar-brand" href="{% url 'index' %}" >
                     <span>Fitness•</span>Freak
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,20 +53,20 @@
                 <ul class="navbar-nav">
                     <li class="dropdown nav-item">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Home</a>
+                            <a href="{% url 'index' %}" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">About</a>
+                            <a href="{% url 'about' %}" class="nav-link">About</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Food</a>
+                            <a href="{% url 'food' %}" class="nav-link">Food</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Exercise</a>
+                            <a href="{% url 'exercise' %}" class="nav-link">Exercise</a>
                         </li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" onclick="scrollToDownload()">
+                        <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'signup' %}">
                             <i class="tim-icons icon-double-right"></i> SIGNUP
                         </a>
                     </li>
@@ -90,17 +90,17 @@
                 <div class="col-md-3">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="./index.html" class="nav-link">
+                            <a href="{% url 'index' %}" class="nav-link">
                   Home
                 </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./examples/landing-page.html" class="nav-link">
-                  Landing
+                            <a href="{% url 'food' %}" class="nav-link">
+                  Food
                 </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./examples/register-page.html" class="nav-link">
+                            <a href="{% url 'signup' %}" class="nav-link">
                   Register
                 </a>
                         </li>
@@ -114,23 +114,23 @@
                 <div class="col-md-3">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="https://creative-tim.com/contact-us" class="nav-link">
+                            <a href="{% url 'contact' %}" class="nav-link">
                   Contact Us
                 </a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://creative-tim.com/about-us" class="nav-link">
+                            <a href="{% url 'about' %}" class="nav-link">
                   About Us
                 </a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://creative-tim.com/blog" class="nav-link">
+                            <a href="#" class="nav-link">
                   Blog
                 </a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://opensource.org/licenses/MIT" class="nav-link">
-                  License
+                            <a href="{% url 'exercise' %}" class="nav-link">
+                  Exercise
                 </a>
                         </li>
                     </ul>
