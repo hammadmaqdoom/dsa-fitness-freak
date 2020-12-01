@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -135,3 +137,8 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 # Login URL
 
+LOGIN_URL = '/loginn/'
+
+# Log out URL
+
+LOGOUT_REDIRECT_URL = "index"

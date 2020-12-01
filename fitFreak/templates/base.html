@@ -66,10 +66,19 @@
                         </li>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'signup' %}">
-                            <i class="tim-icons icon-double-right"></i> SIGNUP
-                        </a>
+                        {% comment %} {% if request.user.is_authenticated %}
+                            <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'logout' %}">
+                                <i class="tim-icons icon-double-right"></i> LOGOUT
+                            </a>
+                        {% else %} {% endcomment %}
+                            <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'signup' %}">
+                                <i class="tim-icons icon-double-right"></i> SIGNUP
+                            </a>
+                        {% comment %} {% endif %} {% endcomment %}
+                        </ul>
+                        
                     </li>
+                    
                 </ul>
             </div>
         </div>
