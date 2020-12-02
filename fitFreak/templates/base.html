@@ -65,16 +65,26 @@
                             <a href="{% url 'exercise' %}" class="nav-link">Exercise</a>
                         </li>
                     </li>
-                    <li class="nav-item">
-                        {% comment %} {% if request.user.is_authenticated %}
-                            <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'logout' %}">
+                    
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                            <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'log_out' %}">
                                 <i class="tim-icons icon-double-right"></i> LOGOUT
                             </a>
-                        {% else %} {% endcomment %}
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
                             <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'signup' %}">
                                 <i class="tim-icons icon-double-right"></i> SIGNUP
                             </a>
-                        {% comment %} {% endif %} {% endcomment %}
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link btn btn-default d-none d-lg-block" href="{% url 'loginn' %}">
+                                <i class="tim-icons icon-double-right"></i> LOGIN
+                            </a>
+                            </li>
+                        {% endif %}
+                        
                         </ul>
                         
                     </li>
@@ -85,7 +95,7 @@
     </nav>
     <!-- End Navbar -->
     <div class="wrapper">
-
+        {% block header %} {% endblock header %}
         <div class="main">
             {% block content %} {% endblock content %}
         </div>

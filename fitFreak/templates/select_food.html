@@ -1,0 +1,235 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block header %} 
+<div class="page-header header-filter">
+    <div class="container">
+    <div class="row">
+        <div class="content-center brand">
+            <h1 class="h1-seo">Food</h1>
+            <h3>Track your nutrition, fitness & health data.</h3>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+
+
+<div class="section section-tabs">
+                <div class="container">
+                    <div class="title">
+                        <h3 class="mb-3">Food Intake Record</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+                            {% comment %} <div class="mb-3">
+                                <small class="text-uppercase font-weight-bold">With icons</small>
+                            </div> {% endcomment %}
+                            <!-- Nav tabs -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <ul class="nav nav-tabs nav-tabs-primary" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#link1" role="tablist">
+                                                <i class="tim-icons icon-spaceship"></i> Intake
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#link2" role="tablist">
+                                                <i class="tim-icons icon-settings-gear-63"></i> Settings
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#link3" role="tablist">
+                                                <i class="tim-icons icon-bag-16"></i> Options
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Tab panes -->
+                                    <div class="tab-content tab-space">
+                                        <div class="tab-pane active" id="link1">
+                                           <form class="form" method="post">
+                                                {% csrf_token %}
+                                                {% for hidden_field in form.hidden_fields %}
+                                                    {{ hidden_field }}
+                                                {% endfor %}
+
+                                                {% if form.non_field_errors %}
+                                                    <div class="alert alert-danger" role="alert">
+                                                    {% for error in form.non_field_errors %}
+                                                        {{ error }}
+                                                    {% endfor %}
+                                                    </div>
+                                                {% endif %}
+
+                                                {% for field in form.visible_fields %}
+                                                    <div class="form-group">
+                                                    {{ field.label_tag }}
+
+                                                    {% if form.is_bound %}
+                                                        {% if field.errors %}
+                                                        {% render_field field class="form-control is-invalid" %}
+                                                        {% for error in field.errors %}
+                                                            <div class="invalid-feedback">
+                                                            {{ error }}
+                                                            </div>
+                                                        {% endfor %}
+                                                        {% else %}
+                                                        {% render_field field class="form-control is-valid" %}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% render_field field class="form-control input-group input-group-prepend" %}
+                                                    {% endif %}
+
+                                                    {% if field.help_text %}
+                                                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                                                    {% endif %}
+                                                    </div>
+                                                {% endfor %}
+                                                    <input  class="btn btn-info btn-round btn-lg" type="submit" name="" value="Select"> <br />
+                                            </form>
+                                        </div>
+                                        {% comment %} <div class="tab-pane" id="link2">
+                                            <p>Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas.
+                                                <br />
+                                                <br/>Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
+                                        </div>
+                                        <div class="tab-pane" id="link3">
+                                            <p>Efficiently unleash cross-media information without cross-media value. Quickly maximize timely deliverables for real-time schemas.
+                                                <br />
+                                                <br/> Dramatically maintain clicks-and-mortar solutions without functional solutions.</p>
+                                        </div> {% endcomment %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+    <div class="section">
+        <div class="container">
+            <div class="row justify-content-between">
+
+                        {% comment %} <form method="POST" action="" class="form">
+                        {% csrf_token %}
+                        <h5 class="form-labels">
+                            {{ form.as_p }}
+                        </h5>
+                            <input class="btn btn-info btn-round btn-lg" type="submit" value="select">
+
+                        </form> {% endcomment %}
+                    {% comment %} <div class="col-md-6">
+                            <h1 class="profile-title text-left">Select Food</h1>
+                            <form class="form" method="post">
+                                {% csrf_token %}
+                                {% for hidden_field in form.hidden_fields %}
+                                    {{ hidden_field }}
+                                {% endfor %}
+
+                                {% if form.non_field_errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                    {% for error in form.non_field_errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                                {% for field in form.visible_fields %}
+                                    <div class="form-group">
+                                    {{ field.label_tag }}
+
+                                    {% if form.is_bound %}
+                                        {% if field.errors %}
+                                        {% render_field field class="form-control is-invalid" %}
+                                        {% for error in field.errors %}
+                                            <div class="invalid-feedback">
+                                            {{ error }}
+                                            </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        {% render_field field class="form-control is-valid" %}
+                                        {% endif %}
+                                    {% else %}
+                                        {% render_field field class="form-control input-group input-group-prepend" %}
+                                    {% endif %}
+
+                                    {% if field.help_text %}
+                                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                                    {% endif %}
+                                    </div>
+                                {% endfor %}
+                                    <input  class="btn btn-info btn-round btn-lg" type="submit" name="" value="Select"> <br />
+                                </div>
+                            </form>
+                    </div> {% endcomment %}
+
+
+                {% comment %} <div class="container-fluid"> {% endcomment %}
+                {% comment %} <h1 class="headline text-center pb-3">All Food Items </h1> {% endcomment %}
+                    {% comment %} <table class="table table-bordered text-center">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Food Name</th>
+                                <th scope="col">Calories</th>
+                                <th scope="col">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for food in food_items %}
+                            <tr>
+                                <td>{{ food.name }}</td>
+                                <td>{{ food.calorie }}</td>
+                                <td>{{ food.quantity }}</td>
+                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> {% endcomment %}
+                    <br /><br /><br /><br />
+                        <div class="col-md-5  ml-auto mr-auto">
+                                <div class="card card-coin card-plain">
+                                    <div class="card-header">
+                                        <h4 class="title">All Food Items</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table tablesorter " id="plain-table">
+                                                <thead class=" text-primary">
+                                                <tr>
+                                                    <th class="header">
+                                                    Food Name
+                                                    </th>
+                                                    <th class="header">
+                                                    Calories
+                                                    </th>
+                                                    <th class="header">
+                                                    Quantity
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for food in food_items %}
+                                                    <tr>
+                                                    <td>{{ food.name }}</td>
+                                                    <td>{{ food.calorie }}</td>
+                                                    <td>{{ food.quantity }}</td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+            </div>                    
+        </div>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="wrapper">
+    <br /><br /><br /><br /><br /><br /><br />
+    <div class="page-header">
+        <div class="container align-items-center">
+                <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <h1 class="profile-title text-left">Hello {{ request.user }}!</h1>
+                    <h5 class="text-on-back">01</h5>
+                </div>
+                <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                    <div class="card card-coin card-plain">
+                    <div class="card-header">
+                        <img src="../assets/img/mike.jpg" class="img-center img-fluid rounded-circle">
+                        <h4 class="title">Transactions</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-tabs-primary justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#linka">
+                            Wallet
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#linkb">
+                            Send
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#linkc">
+                            News
+                            </a>
+                        </li>
+                        </ul>
+                        <div class="tab-content tab-subcategories">
+                        <div class="tab-pane active" id="linka">
+                            <div class="row">
+                            <label class="col-sm-3 col-form-label">Your Goal</label>
+                                            <form class="form" method="post">
+                                                {% csrf_token %}
+                                                
+                                                {% for field in form.visible_fields %}
+                                                    <div class="form-group">
+                                                    {{ field.label_tag }}
+
+                                                    {% if form.is_bound %}
+                                                        {% if field.errors %}
+                                                        {% render_field field class="form-control is-invalid" %}
+                                                        {% for error in field.errors %}
+                                                            <div class="invalid-feedback">
+                                                            {{ error }}
+                                                            </div>
+                                                        {% endfor %}
+                                                        {% else %}
+                                                        {% render_field field class="form-control is-valid" %}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% render_field field class="form-control input-group input-group-prepend" %}
+                                                    {% endif %}
+
+                                                    {% if field.help_text %}
+                                                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                                                    {% endif %}
+                                                    </div>
+                                                {% endfor %}
+                                                <button type="submit" class="btn btn-simple btn-primary btn-icon btn-round float-right"><i class="tim-icons icon-send"></i></button>
+                                            </form>
+                            </div>
+                            
+                        </div>
+                        <div class="tab-pane" id="linkb">
+                            <div class="table-responsive">
+                            
+                            <table class="table tablesorter " id="plain-table">
+                                <thead class=" text-primary">
+                                <tr>
+                                    <th class="header">
+                                    COIN
+                                    </th>
+                                    <th class="header">
+                                    AMOUNT
+                                    </th>
+                                    <th class="header">
+                                    VALUE
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                    BTC
+                                    </td>
+                                    <td>
+                                    7.342
+                                    </td>
+                                    <td>
+                                    48,870.75 USD
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    ETH
+                                    </td>
+                                    <td>
+                                    30.737
+                                    </td>
+                                    <td>
+                                    64,53.30 USD
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    XRP
+                                    </td>
+                                    <td>
+                                    19.242
+                                    </td>
+                                    <td>
+                                    18,354.96 USD
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-pane" id="linkc">
+                            <div class="table-responsive">
+                            <table class="table tablesorter " id="plain-table">
+                                <thead class=" text-primary">
+                                <tr>
+                                    <th class="header">
+                                    Latest Crypto News
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                    The Daily: Nexo to Pay on Stable...
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    Venezuela Begins Public of Nation...
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    PR: BitCanna – Dutch Blockchain...
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+<div class="section">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-md-6">
+            <h1 class="headline">Your Profile :</h1>
+            <div class="row mt-4 mb-4">
+                <div class="col-lg-5 card card-body">
+                <div class="app-title">
+                    
+                    <h1 class="text-center profile-text mt-2">Name: {{ request.user }} </h1>
+
+                </div>
+
+            </div>    
+           </div>
+        
+          <div class="col-md-6">
+            <h1 class="text-center headline pb-2">Records From Past Week</h1>
+            <table class="table text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Calorie Consumed</th>
+                        <th scope="col">Calorie Goal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for record in records %}
+                    <tr>
+                        <td>{{ record.date }}</td>
+                        <td>{{ record.total_calorie }}</td>
+                        <td>{{ record.calorie_goal }}</td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>  
+        </div>
+
+        </div>
+        
+    
+        </div>
+
+        <div class="row justify-content-between">
+        <div class="col-md-6">
+
+        <h1 class="text-center headline">All Food Items</h1>
+        <table class="table text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Food Name</th>
+                        <th scope="col">Calories</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for food in food_items %}
+                    <tr>
+                        <td>{{ food.name }}</td>
+                        <td>{{ food.calorie }}</td>
+                        <td>{{ food.quantity }}</td>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'update_food' food.id %}">Update</a></td>
+                        <td><a class="btn btn-sm " href="{% url 'delete_food' food.id %}">Delete</a></td>
+
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>  
+        </div>
+        </div>
+    </div>
+     </div>
+{% endblock content %}

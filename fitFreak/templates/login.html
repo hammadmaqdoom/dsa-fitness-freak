@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
 <div class="wrapper">
     <div class="page-header">
       <div class="page-header-image"></div>
@@ -21,7 +23,7 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                  <form class="form" method="POST">
+                  {% comment %} <form class="form" method="POST">
                   {% csrf_token %}
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -29,7 +31,7 @@
                           <i class="tim-icons icon-email-85"></i>
                         </div>
                       </div>
-                      <input type="text" placeholder="Username" class="form-control">
+                      <input id="username" type="text" placeholder="Username" class="form-control">
                     </div>
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -37,17 +39,64 @@
                           <i class="tim-icons icon-lock-circle"></i>
                         </div>
                       </div>
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input id ="password" type="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="card-footer">
                       <input type="submit" class="btn btn-info btn-round btn-lg" name="" value="Login">
                     </div>
-                  </form> 
+                      <p class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create an account</a>.</p>
+                  </form>  {% endcomment %}
                   {% comment %} <form class="form" method="post">
                       {% csrf_token %}
                       {{ form.as_p }}
                       <input type="submit" value="Login">
                   </form> {% endcomment %}
+    
+                  <form class="form" method="post" novalidate>
+                  {% csrf_token %}
+                  {% for hidden_field in form.hidden_fields %}
+                    {{ hidden_field }}
+                  {% endfor %}
+
+                  {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                      {% for error in form.non_field_errors %}
+                        {{ error }}
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+
+                  {% for field in form.visible_fields %}
+                    <div class="form-group">
+                      {{ field.label_tag }}
+
+                      {% if form.is_bound %}
+                        {% if field.errors %}
+                          {% render_field field class="form-control is-invalid" %}
+                          {% for error in field.errors %}
+                            <div class="invalid-feedback">
+                              {{ error }}
+                            </div>
+                          {% endfor %}
+                        {% else %}
+                          {% render_field field class="form-control is-valid" %}
+                        {% endif %}
+                      {% else %}
+                        {% render_field field class="form-control input-group input-group-prepend" %}
+                      {% endif %}
+
+                      {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                  <div class="card-footer">
+                      <input  class="btn btn-info btn-round btn-lg" type="submit" name="" value="Login"> <br />
+                  </div>
+                                        <p class="text-center">Don't have an account? <a href="{% url 'signup' %}">Create an account</a>.</p>
+
+                </div>
+                </form>
                 </div>
                 
               </div>

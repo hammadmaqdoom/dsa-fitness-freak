@@ -3,6 +3,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
+from django.forms import ModelForm
+from .models import Food,Profile
 
 
 class CustomUserCreationForm(forms.Form):
@@ -41,3 +43,38 @@ class CustomUserCreationForm(forms.Form):
             self.cleaned_data['password1']
         )
         return user
+
+# class CustomLoginForm(forms.Form):
+#     username = forms.CharField(label='Enter Username', min_length=4, max_length=150, widget=forms.TextInput(attrs={'placeholder': 'Username'}))
+#     password = forms.CharField(label='Enter password', widget=forms.PasswordInput)
+
+#     def clean_username(self):
+#         username = self.cleaned_data['username'].lower()
+#         r = User.objects.filter(username=username)
+#         if not r.count():
+#             raise  ValidationError("Username does not exist")
+#         return username
+    
+#     def clean_password(self):
+#         password = self.cleaned_data.get('password')
+#         return password
+
+class SelectFoodForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('food_selected','quantity',)
+
+    def __init__(self, user, *args, **kwargs):
+        super(SelectFoodForm, self).__init__(*args, **kwargs)
+        self.fields['food_selected'].queryset = Food.objects.filter(person_of=user)
+
+class AddFoodForm(forms.ModelForm):
+    class Meta:
+        model = Food
+        fields = ('name','quantity','calorie')
+
+   
+class ProfileForm(forms.ModelForm):
+	class Meta:
+		model = Profile
+		fields = ('calorie_goal',)
